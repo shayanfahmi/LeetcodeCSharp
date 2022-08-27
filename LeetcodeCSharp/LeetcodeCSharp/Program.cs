@@ -7,9 +7,26 @@ namespace LeetcodeCSharp
     {
         static void Main(string[] args)
         {
-            //300. Longest Increasing Subsequence
-            int[] temp = new int[] { 10, 9, 2, 5, 3, 7, 101, 18 };
-            Console.WriteLine(LengthOfLIS(temp));
+            ////300. Longest Increasing Subsequence
+            //int[] temp = new int[] { 10, 9, 2, 5, 3, 7, 101, 18 };
+            //Console.WriteLine(LengthOfLIS(temp));
+
+            //53.Maximum Subarray
+            int[] nums = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+            Console.WriteLine(MaxSubArray(nums));
+        }
+
+        public static int MaxSubArray(int[] nums)
+        {
+            //53.Maximum Subarray
+            int maxSum = nums[0];
+            int sum = nums[0];
+            for (int i = 1; i < nums.Length; i++)
+            {
+                sum = Math.Max(nums[i], sum + nums[i]);
+                maxSum = Math.Max(sum, maxSum);
+            }
+            return maxSum;
         }
 
         public static int LengthOfLIS(int[] nums)
