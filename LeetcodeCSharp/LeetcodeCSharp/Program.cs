@@ -25,23 +25,43 @@ namespace LeetcodeCSharp
             //int[] nums = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
             //Console.WriteLine(MaxSubArray(nums));
 
-            //Same Tree
-            TreeNode a1 = new TreeNode(1);
-            TreeNode b1 = new TreeNode(2);
-            TreeNode c1 = new TreeNode(3);
-            a1.left = b1;
-            a1.right = c1;
+            ////100. Same Tree
+            //TreeNode a1 = new TreeNode(1);
+            //TreeNode b1 = new TreeNode(2);
+            //TreeNode c1 = new TreeNode(3);
+            //a1.left = b1;
+            //a1.right = c1;
 
-            TreeNode a2 = new TreeNode(1);
-            TreeNode b2 = new TreeNode(2);
-            TreeNode c2 = new TreeNode(3);
-            a2.left = b2;
-            a2.right = c2;
-            Console.WriteLine(IsSameTree(a1, a2));
+            //TreeNode a2 = new TreeNode(1);
+            //TreeNode b2 = new TreeNode(2);
+            //TreeNode c2 = new TreeNode(3);
+            //a2.left = b2;
+            //a2.right = c2;
+            //Console.WriteLine(IsSameTree(a1, a2));
+
+            //104. Maximum Depth of Binary Tree
+            TreeNode a = new TreeNode(3);
+            TreeNode b = new TreeNode(9);
+            TreeNode c = new TreeNode(20);
+            TreeNode d = new TreeNode(15);
+            TreeNode e = new TreeNode(7);
+            a.left = b;
+            a.right = c;
+            c.left = d;
+            c.right = e;
+            Console.WriteLine(MaxDepth(a));
+        }
+
+        public static int MaxDepth(TreeNode root)
+        {
+            //104.Maximum Depth of Binary Tree
+            if (root == null) return 0;
+            return Math.Max(MaxDepth(root.left), MaxDepth(root.right)) + 1;
         }
 
         public static bool IsSameTree(TreeNode p, TreeNode q)
         {
+            //100. Same Tree
             if (p == null && q == null) return true;
             if (p == null || q == null) return false;
             if (p.val != q.val) return false;
