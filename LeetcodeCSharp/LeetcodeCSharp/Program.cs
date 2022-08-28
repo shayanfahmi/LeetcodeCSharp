@@ -39,17 +39,54 @@ namespace LeetcodeCSharp
             //a2.right = c2;
             //Console.WriteLine(IsSameTree(a1, a2));
 
-            //104. Maximum Depth of Binary Tree
-            TreeNode a = new TreeNode(3);
-            TreeNode b = new TreeNode(9);
-            TreeNode c = new TreeNode(20);
-            TreeNode d = new TreeNode(15);
-            TreeNode e = new TreeNode(7);
-            a.left = b;
-            a.right = c;
-            c.left = d;
-            c.right = e;
-            Console.WriteLine(MaxDepth(a));
+            ////104. Maximum Depth of Binary Tree
+            //TreeNode a = new TreeNode(3);
+            //TreeNode b = new TreeNode(9);
+            //TreeNode c = new TreeNode(20);
+            //TreeNode d = new TreeNode(15);
+            //TreeNode e = new TreeNode(7);
+            //a.left = b;
+            //a.right = c;
+            //c.left = d;
+            //c.right = e;
+            //Console.WriteLine(MaxDepth(a));
+
+            //329. Longest Increasing Path in a Matrix
+            List<List<int>> list = new List<List<int>>();
+            list.Add(new List<int>() { 9, 9, 4 });
+            list.Add(new List<int>() { 6, 6, 8 });
+            list.Add(new List<int>() { 2, 1, 1 });
+            Console.WriteLine(LongestIncreasingPath(list));
+        }
+
+        public static int LongestIncreasingPath(List<List<int>> matrix)
+        {
+            //329. Longest Increasing Path in a Matrix
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            int max = 0;
+            for (int i = 0; i < matrix.Count; i++)
+            {
+                for (int j = 0; j < matrix[0].Count; j++)
+                {
+                    max = Math.Max(max, FindLongestIncreasingPath(0, 0, matrix, int.MinValue, dict));
+                }
+            }
+            return max;
+        }
+
+        public static int FindLongestIncreasingPath(int x, int y, List<List<int>> matrix, int check, Dictionary<string, int> dict)
+        {
+            //329. Longest Increasing Path in a Matrix
+            if (x >= matrix.Count || x < 0 || y >= matrix[0].Count || y < 0) return 0;
+            if (check >= matrix[x][y]) return 0;
+            if (dict.ContainsKey(x + "," + y)) return dict[x + "," + y];
+            int max = 0;
+            max = Math.Max(max, FindLongestIncreasingPath(x, y - 1, matrix, matrix[x][y], dict));
+            max = Math.Max(max, FindLongestIncreasingPath(x, y + 1, matrix, matrix[x][y], dict));
+            max = Math.Max(max, FindLongestIncreasingPath(x - 1, y, matrix, matrix[x][y], dict));
+            max = Math.Max(max, FindLongestIncreasingPath(x + 1, y, matrix, matrix[x][y], dict));
+            dict.Add(x + "," + y, max + 1);
+            return dict[x + "," + y];
         }
 
         public static int MaxDepth(TreeNode root)
