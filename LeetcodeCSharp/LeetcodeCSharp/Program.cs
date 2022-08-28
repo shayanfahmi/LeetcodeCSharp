@@ -51,12 +51,41 @@ namespace LeetcodeCSharp
             //c.right = e;
             //Console.WriteLine(MaxDepth(a));
 
-            //329. Longest Increasing Path in a Matrix
-            List<List<int>> list = new List<List<int>>();
-            list.Add(new List<int>() { 9, 9, 4 });
-            list.Add(new List<int>() { 6, 6, 8 });
-            list.Add(new List<int>() { 2, 1, 1 });
-            Console.WriteLine(LongestIncreasingPath(list));
+            ////329. Longest Increasing Path in a Matrix
+            //List<List<int>> list = new List<List<int>>();
+            //list.Add(new List<int>() { 9, 9, 4 });
+            //list.Add(new List<int>() { 6, 6, 8 });
+            //list.Add(new List<int>() { 2, 1, 1 });
+            //Console.WriteLine(LongestIncreasingPath(list));
+
+            //543. Diameter of Binary Tree
+            TreeNode a = new TreeNode(1);
+            TreeNode b = new TreeNode(2);
+            TreeNode c = new TreeNode(3);
+            TreeNode d = new TreeNode(4);
+            TreeNode e = new TreeNode(5);
+            a.left = b;
+            a.right = c;
+            b.left = d;
+            b.right = e;
+            var temp = new Program();
+            Console.WriteLine(temp.DiameterOfBinaryTree(a));
+        }
+        int max = 0;
+        public int DiameterOfBinaryTree(TreeNode root)
+        {
+            //543.Diameter of Binary Tree
+            CheckDiameter(root);
+            return max;
+        }
+        public int CheckDiameter(TreeNode root)
+        {
+            //543.Diameter of Binary Tree
+            if (root == null) return 0;
+            int left = CheckDiameter(root.left);
+            int right = CheckDiameter(root.right);
+            max = Math.Max(max, left + right + 1);
+            return Math.Max(left + 1, right + 1);
         }
 
         public static int LongestIncreasingPath(List<List<int>> matrix)
