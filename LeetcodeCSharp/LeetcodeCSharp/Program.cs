@@ -3,6 +3,16 @@ using System.Collections.Generic;
 
 namespace LeetcodeCSharp
 {
+    public class TreeNode {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -11,9 +21,34 @@ namespace LeetcodeCSharp
             //int[] temp = new int[] { 10, 9, 2, 5, 3, 7, 101, 18 };
             //Console.WriteLine(LengthOfLIS(temp));
 
-            //53.Maximum Subarray
-            int[] nums = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
-            Console.WriteLine(MaxSubArray(nums));
+            ////53.Maximum Subarray
+            //int[] nums = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+            //Console.WriteLine(MaxSubArray(nums));
+
+            //Same Tree
+            TreeNode a1 = new TreeNode(1);
+            TreeNode b1 = new TreeNode(2);
+            TreeNode c1 = new TreeNode(3);
+            a1.left = b1;
+            a1.right = c1;
+
+            TreeNode a2 = new TreeNode(1);
+            TreeNode b2 = new TreeNode(2);
+            TreeNode c2 = new TreeNode(3);
+            a2.left = b2;
+            a2.right = c2;
+            Console.WriteLine(IsSameTree(a1, a2));
+        }
+
+        public static bool IsSameTree(TreeNode p, TreeNode q)
+        {
+            if (p == null && q == null) return true;
+            if (p == null || q == null) return false;
+            if (p.val != q.val) return false;
+            if (IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right)) {
+                return true;
+            }
+            return false;
         }
 
         public static int MaxSubArray(int[] nums)

@@ -1,4 +1,28 @@
 ﻿<Properties StartupConfiguration="{88D4F596-3177-4A27-9B5A-091FDE742BD0}|Default">
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.LeetcodeCSharp FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/shayanfahmi/Workspace/LeetcodeCSharp/LeetcodeCSharp/LeetcodeCSharp/Program.cs" relfile="LeetcodeCSharp/Program.cs" line="16" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="LeetcodeCSharp/Program.cs">
+    <Files>
+      <File FileName="LeetcodeCSharp/Program.cs" Line="25" Column="14" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="LeetcodeCSharp" expanded="True">
+            <Node name="LeetcodeCSharp" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.LeetcodeCSharp PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
