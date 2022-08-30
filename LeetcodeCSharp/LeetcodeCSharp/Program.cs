@@ -58,19 +58,56 @@ namespace LeetcodeCSharp
             //list.Add(new List<int>() { 2, 1, 1 });
             //Console.WriteLine(LongestIncreasingPath(list));
 
-            //543. Diameter of Binary Tree
-            TreeNode a = new TreeNode(1);
-            TreeNode b = new TreeNode(2);
-            TreeNode c = new TreeNode(3);
-            TreeNode d = new TreeNode(4);
-            TreeNode e = new TreeNode(5);
-            a.left = b;
-            a.right = c;
-            b.left = d;
-            b.right = e;
-            var temp = new Program();
-            Console.WriteLine(temp.DiameterOfBinaryTree(a));
+            ////543. Diameter of Binary Tree
+            //TreeNode a = new TreeNode(1);
+            //TreeNode b = new TreeNode(2);
+            //TreeNode c = new TreeNode(3);
+            //TreeNode d = new TreeNode(4);
+            //TreeNode e = new TreeNode(5);
+            //a.left = b;
+            //a.right = c;
+            //b.left = d;
+            //b.right = e;
+            //var temp = new Program();
+            //Console.WriteLine(temp.DiameterOfBinaryTree(a));
+
+            //17. Letter Combinations of a Phone Number
+            var res = LetterCombinations("234");
+            foreach (var item in res) {
+                Console.WriteLine(item);
+            }
         }
+
+        public static IList<string> LetterCombinations(string digits)
+        {
+            //17. Letter Combinations of a Phone Number
+            IList<string> resList = new List<string>();
+            Dictionary<char, List<char>> dict = new Dictionary<char, List<char>>();
+            dict.Add('2', new List<char>() { 'a', 'b', 'c'});
+            dict.Add('3', new List<char>() { 'd', 'e', 'f' });
+            dict.Add('4', new List<char>() { 'g', 'h', 'i' });
+            dict.Add('5', new List<char>() { 'j', 'k', 'l' });
+            dict.Add('6', new List<char>() { 'm', 'n', 'o' });
+            dict.Add('7', new List<char>() { 'p', 'q', 'r', 's' });
+            dict.Add('8', new List<char>() { 't', 'u', 'v' });
+            dict.Add('9', new List<char>() { 'w', 'x', 'y', 'z' });
+            FindCombinations(0, digits, resList, dict);
+            return resList;
+        }
+
+        private static void FindCombinations(int curr, string digits, IList<string> resList, Dictionary<char, List<char>> dict, string final="")
+        {
+            //17. Letter Combinations of a Phone Number
+            if (curr == digits.Length) {
+                resList.Add(final);
+                return;
+            }
+            foreach (var item in dict[digits[curr]]) {
+                FindCombinations(curr+1, digits, resList, dict, final+item);
+            }
+            return;
+        }
+
         int max = 0;
         public int DiameterOfBinaryTree(TreeNode root)
         {
