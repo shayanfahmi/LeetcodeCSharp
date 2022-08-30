@@ -71,11 +71,62 @@ namespace LeetcodeCSharp
             //var temp = new Program();
             //Console.WriteLine(temp.DiameterOfBinaryTree(a));
 
-            //17. Letter Combinations of a Phone Number
-            var res = LetterCombinations("234");
-            foreach (var item in res) {
-                Console.WriteLine(item);
+            ////17. Letter Combinations of a Phone Number
+            //var res = LetterCombinations("234");
+            //foreach (var item in res) {
+            //    Console.WriteLine(item);
+            //}
+
+            //Combination sum
+            int[] candidates = new int[] { 2, 3, 6, 7};
+            var res = CombinationSum(candidates, 7);
+            foreach (var items in res) {
+                foreach (var item in items) {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine("___");
             }
+        }
+
+        public static IList<IList<int>> CombinationSum(int[] candidates, int target)
+        {
+            IList<IList<int>> resList = new List<IList<int>>();
+
+            FindCombinationSum(0, candidates, target, resList, new List<int>());
+
+            return resList;
+        }
+
+        private static void FindCombinationSum(int index, int[] candidates, int target, IList<IList<int>> resList, List<int> tempList)
+        {
+            if (target == 0) {
+                resList.Add(tempList);
+                return;
+            }
+            if (index >= candidates.Length) return;
+            if (target < 0) return;
+            for (int i = 0; i * candidates[index] <= target; i++) {
+                FindCombinationSum(
+                    index+1,
+                    candidates,
+                    target - (i * candidates[index]),
+                    resList,
+                    CreateList(tempList, candidates[index], i));
+            }
+        }
+
+        private static List<int> CreateList(List<int> tempList, int digitToAdd, int times) {
+            List<int> res = new List<int>();
+            foreach (var item in tempList)
+            {
+                res.Add(item);
+            }
+
+            for (int i = 0; i < times; i++) {
+                res.Add(digitToAdd);
+            }
+
+            return res;
         }
 
         public static IList<string> LetterCombinations(string digits)
