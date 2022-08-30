@@ -77,7 +77,7 @@ namespace LeetcodeCSharp
             //    Console.WriteLine(item);
             //}
 
-            //Combination sum
+            //39. Combination Sum
             int[] candidates = new int[] { 2, 3, 6, 7};
             var res = CombinationSum(candidates, 7);
             foreach (var items in res) {
@@ -90,6 +90,7 @@ namespace LeetcodeCSharp
 
         public static IList<IList<int>> CombinationSum(int[] candidates, int target)
         {
+            //39. Combination Sum
             IList<IList<int>> resList = new List<IList<int>>();
 
             FindCombinationSum(0, candidates, target, resList, new List<int>());
@@ -99,6 +100,7 @@ namespace LeetcodeCSharp
 
         private static void FindCombinationSum(int index, int[] candidates, int target, IList<IList<int>> resList, List<int> tempList)
         {
+            //39. Combination Sum
             if (target == 0) {
                 resList.Add(tempList);
                 return;
@@ -116,6 +118,7 @@ namespace LeetcodeCSharp
         }
 
         private static List<int> CreateList(List<int> tempList, int digitToAdd, int times) {
+            //39. Combination Sum
             List<int> res = new List<int>();
             foreach (var item in tempList)
             {
