@@ -77,15 +77,41 @@ namespace LeetcodeCSharp
             //    Console.WriteLine(item);
             //}
 
-            //39. Combination Sum
-            int[] candidates = new int[] { 2, 3, 6, 7};
-            var res = CombinationSum(candidates, 7);
-            foreach (var items in res) {
-                foreach (var item in items) {
-                    Console.WriteLine(item);
+            ////39. Combination Sum
+            //int[] candidates = new int[] { 2, 3, 6, 7};
+            //var res = CombinationSum(candidates, 7);
+            //foreach (var items in res) {
+            //    foreach (var item in items) {
+            //        Console.WriteLine(item);
+            //    }
+            //    Console.WriteLine("___");
+            //}
+
+            //3. Longest Substring Without Repeating Characters
+            Console.WriteLine(LengthOfLongestSubstring("abba"));
+        }
+
+        public static int LengthOfLongestSubstring(string s)
+        {
+            //3. Longest Substring Without Repeating Characters
+            if (s.Length == 0) return 0;
+            Dictionary<char, int> dict = new Dictionary<char, int>();
+            int max = 0;
+            int start = 0;
+            int end = 0;
+            while (end < s.Length && start < s.Length && start <= end) {
+                if (dict.ContainsKey(s[end]))
+                {
+                    start = Math.Max(start, dict[s[end]] + 1);
+                    dict[s[end]] = end;
                 }
-                Console.WriteLine("___");
+                else {
+                    dict.Add(s[end], end);
+                }
+                max = Math.Max(max, end - start + 1);
+                end++;
             }
+            return max;
         }
 
         public static IList<IList<int>> CombinationSum(int[] candidates, int target)
