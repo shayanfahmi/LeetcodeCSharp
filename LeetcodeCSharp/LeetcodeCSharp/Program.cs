@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace LeetcodeCSharp
 {
@@ -93,15 +94,37 @@ namespace LeetcodeCSharp
             ////13. Roman to Integer
             //Console.WriteLine(RomanToInt("IX"));
 
-            //1. Two Sum
-            int[] nums = new int[] { 3, 3}; 
-            foreach (var item in TwoSum(nums, 6)) {
+            ////1. Two Sum
+            //int[] nums = new int[] { 3, 3}; 
+            //foreach (var item in TwoSum(nums, 6)) {
+            //    Console.WriteLine(item);
+            //}
+
+            //167.Two Sum II -Input Array Is Sorted
+            int[] nums = new int[] { 2,7,11,15}; 
+            foreach (var item in TwoSumII(nums, 9))
+            {
                 Console.WriteLine(item);
             }
         }
 
+        public static int[] TwoSumII(int[] numbers, int target)
+        {
+            //167.Two Sum II -Input Array Is Sorted
+            int left = 0;
+            int right = numbers.Length - 1;
+            while (left < right) {
+                int sum = numbers[left] + numbers[right];
+                if (sum == target) return new int[] { left + 1, right + 1 };
+                else if (sum > target) right--;
+                else left++;
+            }
+            return new int[] { };
+        }
+
         public static int[] TwoSum(int[] nums, int target)
         {
+            //1. Two Sum
             for (int i = 0; i < nums.Length; i++) {
                 int index = Array.IndexOf(nums, target - nums[i]);
                 if (index != -1 && index != i) return new int[] { i, index };
