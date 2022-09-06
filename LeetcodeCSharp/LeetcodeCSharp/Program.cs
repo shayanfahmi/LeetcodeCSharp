@@ -90,12 +90,28 @@ namespace LeetcodeCSharp
             ////3. Longest Substring Without Repeating Characters
             //Console.WriteLine(LengthOfLongestSubstring("abba"));
 
-            //13. Roman to Integer
-            Console.WriteLine(RomanToInt("IX"));
+            ////13. Roman to Integer
+            //Console.WriteLine(RomanToInt("IX"));
+
+            //1. Two Sum
+            int[] nums = new int[] { 3, 3}; 
+            foreach (var item in TwoSum(nums, 6)) {
+                Console.WriteLine(item);
+            }
+        }
+
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            for (int i = 0; i < nums.Length; i++) {
+                int index = Array.IndexOf(nums, target - nums[i]);
+                if (index != -1 && index != i) return new int[] { i, index };
+            }
+            return new int[] { };
         }
 
         public static int RomanToInt(string s)
         {
+            //13. Roman to Integer
             s = s.Trim();
             Dictionary<char, int> dict = new Dictionary<char, int>();
             dict.Add('I', 1);
