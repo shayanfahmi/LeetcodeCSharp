@@ -87,8 +87,34 @@ namespace LeetcodeCSharp
             //    Console.WriteLine("___");
             //}
 
-            //3. Longest Substring Without Repeating Characters
-            Console.WriteLine(LengthOfLongestSubstring("abba"));
+            ////3. Longest Substring Without Repeating Characters
+            //Console.WriteLine(LengthOfLongestSubstring("abba"));
+
+            //13. Roman to Integer
+            Console.WriteLine(RomanToInt("IX"));
+        }
+
+        public static int RomanToInt(string s)
+        {
+            s = s.Trim();
+            Dictionary<char, int> dict = new Dictionary<char, int>();
+            dict.Add('I', 1);
+            dict.Add('V', 5);
+            dict.Add('X', 10);
+            dict.Add('L', 50);
+            dict.Add('C', 100);
+            dict.Add('D', 500);
+            dict.Add('M', 1000);
+            int res = 0;
+            int prev = int.MaxValue; ;
+            foreach (var num in s)
+            {
+                if (prev < dict[num]) {
+                    res += dict[num] - 2 * prev;  
+                } else res += dict[num];
+                prev = dict[num];
+            }
+            return res;
         }
 
         public static int LengthOfLongestSubstring(string s)
